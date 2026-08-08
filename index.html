@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05050a">
+  <meta name="description" content="Vortex — an experimental Proof-of-Work network for independent, verifiable, durable digital proofs.">
+  <title>Vortex — Verify. Don't trust.</title>
+  <style>
+    :root{--bg:#05050a;--panel:#0b0c14;--white:#f5f7ff;--muted:#969bad;--cyan:#00f0ff;--violet:#8a5cff;--pink:#ff2bd6;--lime:#b9ff34;--line:rgba(255,255,255,.1);--mx:50%;--my:20%}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--white);font-family:"Segoe UI",Inter,Arial,sans-serif;overflow-x:hidden;line-height:1.5}a{color:inherit;text-decoration:none}button,input{font:inherit}::selection{background:var(--cyan);color:#001114}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(700px circle at var(--mx) var(--my),rgba(0,240,255,.09),transparent 45%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:auto,48px 48px,48px 48px}
+    body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.08;background:repeating-linear-gradient(0deg,transparent 0 2px,#fff 3px 4px);mix-blend-mode:overlay}
+    #space{position:fixed;inset:0;z-index:-3;width:100%;height:100%}.noise{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 15%,rgba(138,92,255,.13),transparent 28%),radial-gradient(circle at 85% 65%,rgba(255,43,214,.08),transparent 30%)}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}.mono,.eyebrow,.kicker,.tag,.status,.proof-label,.nav-links{font-family:Consolas,"Courier New",monospace;text-transform:uppercase;letter-spacing:.14em}.eyebrow,.kicker{font-size:.72rem;color:var(--cyan)}
+    .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));z-index:120;box-shadow:0 0 14px var(--cyan)}
+    nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;width:min(1160px,calc(100% - 28px));height:62px;border:1px solid var(--line);background:rgba(5,5,10,.7);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+    .brand{display:flex;gap:11px;align-items:center;font-weight:900;letter-spacing:.24em}.brand-mark{width:28px;height:28px;border:1px solid var(--cyan);position:relative;transform:rotate(45deg);box-shadow:0 0 22px rgba(0,240,255,.35)}.brand-mark:before,.brand-mark:after{content:"";position:absolute;inset:5px;border:1px solid var(--pink)}.brand-mark:after{inset:10px;background:var(--white);border:0}
+    .nav-links{display:flex;gap:26px;font-size:.63rem;color:#c2c6d4}.nav-links a:hover{color:var(--cyan)}.nav-cta,.btn{border:1px solid var(--cyan);background:transparent;color:var(--white);padding:12px 17px;cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.69rem;transition:.25s;position:relative;overflow:hidden}.nav-cta:hover,.btn-primary{background:var(--cyan);color:#001114;box-shadow:0 0 30px rgba(0,240,255,.35)}.btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(0,240,255,.3)}.menu{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+    .hero{min-height:100vh;display:grid;place-items:center;padding:140px 0 72px;position:relative}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}.hero h1{font-size:clamp(5.2rem,13vw,10rem);line-height:.76;letter-spacing:-.08em;font-weight:950;margin:28px 0 34px;position:relative;text-shadow:4px 0 0 rgba(255,43,214,.6),-4px 0 0 rgba(0,240,255,.55),0 0 80px rgba(138,92,255,.3)}.hero h1 span{display:block;font-size:.12em;line-height:1.1;letter-spacing:.45em;margin-left:.4em;margin-top:2.2em;color:var(--muted);text-shadow:none}.hero-copy{font-size:clamp(1.05rem,2vw,1.3rem);max-width:650px;color:#c5c9d5}.hero-copy strong{color:#fff}.actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}.btn{padding:16px 22px}.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.03)}
+    .hero-orbit{height:520px;position:relative;display:grid;place-items:center}.core{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 3%,var(--cyan) 4%,#083c50 26%,#090922 55%,#000 72%);box-shadow:0 0 50px rgba(0,240,255,.35),0 0 130px rgba(138,92,255,.25),inset -28px -20px 55px #000;animation:pulse 3s ease-in-out infinite;position:relative}.core:before{content:"V";position:absolute;inset:0;display:grid;place-items:center;font-weight:950;font-size:4.8rem;color:#fff;text-shadow:0 0 30px var(--cyan)}.ring{position:absolute;border:1px solid rgba(0,240,255,.38);border-radius:50%;animation:spin 15s linear infinite}.ring.r1{width:270px;height:270px;transform:rotateX(72deg)}.ring.r2{width:390px;height:390px;border-color:rgba(255,43,214,.25);animation-direction:reverse;animation-duration:22s}.ring.r3{width:480px;height:210px;transform:rotate(25deg);border-style:dashed}.sat{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);top:50%;left:-4px}.r2 .sat{background:var(--pink);box-shadow:0 0 18px var(--pink)}.orbit-note{position:absolute;padding:9px 12px;border:1px solid var(--line);background:rgba(5,5,10,.8);font:10px Consolas;color:#d9dce7;letter-spacing:.09em}.on1{top:10%;right:0}.on2{bottom:13%;left:0}.on3{right:3%;bottom:23%}
+    .status-rail{border-block:1px solid var(--line);background:rgba(255,255,255,.025);overflow:hidden}.rail-track{display:flex;width:max-content;animation:marquee 25s linear infinite}.rail-track span{padding:17px 34px;font:11px Consolas;letter-spacing:.13em;color:#bdc2cf;white-space:nowrap}.rail-track b{color:var(--lime);font-weight:400}.rail-track i{color:var(--pink);font-style:normal}
+    section{padding:130px 0;position:relative}.section-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:end;margin-bottom:64px}.section-head h2{font-size:clamp(2.6rem,6vw,5rem);line-height:.93;letter-spacing:-.055em;max-width:800px}.section-head p{color:var(--muted);max-width:530px;font-size:1.06rem}.outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+    .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.proof-step{background:var(--panel);padding:34px 24px;min-height:270px;position:relative;overflow:hidden}.proof-step:after{content:attr(data-n);position:absolute;right:-8px;bottom:-36px;font-size:8rem;font-weight:950;color:rgba(255,255,255,.025)}.proof-step:hover{background:linear-gradient(145deg,rgba(0,240,255,.08),var(--panel) 50%)}.proof-icon{width:46px;height:46px;border:1px solid var(--cyan);display:grid;place-items:center;color:var(--cyan);font:700 18px Consolas;margin-bottom:40px;transform:rotate(45deg)}.proof-icon span{transform:rotate(-45deg)}.proof-step h3{font-size:1.18rem;margin-bottom:12px}.proof-step p{font-size:.9rem;color:var(--muted)}
+    .products{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.product{min-height:260px;background:rgba(11,12,20,.74);border:1px solid var(--line);padding:28px;position:relative;overflow:hidden;transition:.3s;transform-style:preserve-3d}.product:hover{border-color:rgba(0,240,255,.45);box-shadow:inset 0 0 45px rgba(0,240,255,.045)}.product:nth-child(1),.product:nth-child(4){grid-column:span 7}.product:nth-child(2),.product:nth-child(3){grid-column:span 5}.product:nth-child(5),.product:nth-child(6){grid-column:span 6}.product:before{content:"";position:absolute;width:140px;height:140px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-50px;top:-50px}.product .tag{font-size:.62rem;color:var(--pink)}.product h3{font-size:clamp(1.7rem,3vw,2.6rem);letter-spacing:-.04em;margin:42px 0 14px}.product p{color:var(--muted);max-width:520px}.product .arrow{position:absolute;right:24px;bottom:20px;color:var(--cyan);font-size:1.6rem}
+    .lab{border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;background:rgba(9,10,17,.88);box-shadow:0 45px 120px rgba(0,0,0,.35)}.lab-copy{padding:55px}.lab-copy h2{font-size:clamp(2.5rem,5vw,4.7rem);line-height:.92;letter-spacing:-.05em;margin:22px 0}.lab-copy p{color:var(--muted);max-width:520px}.lab-panel{border-left:1px solid var(--line);padding:28px;background:#06070c}.window-bar{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:24px;font:10px Consolas;color:var(--muted);letter-spacing:.1em}.dots{color:var(--pink)}label{display:block;font:10px Consolas;letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;margin-bottom:10px}#proofInput{width:100%;height:110px;resize:none;background:#030407;border:1px solid var(--line);color:#fff;padding:15px;outline:none;font-family:Consolas}#proofInput:focus{border-color:var(--cyan);box-shadow:0 0 22px rgba(0,240,255,.1)}.generate{width:100%;margin:12px 0 20px}.receipt{border:1px solid var(--line);padding:18px;background:rgba(0,0,0,.35);font:11px/1.8 Consolas;color:#9ba3b8;min-height:172px;word-break:break-all}.receipt b{color:var(--lime);font-weight:400}.receipt .hash{color:var(--cyan)}
+    .architecture{display:grid;grid-template-columns:1fr 1.2fr;gap:18px}.arch-main,.arch-stack>div{border:1px solid var(--line);background:rgba(11,12,20,.8)}.arch-main{padding:42px;min-height:470px;position:relative;overflow:hidden}.arch-main h3{font-size:3rem;line-height:.95;margin:25px 0}.arch-main p,.arch-stack p{color:var(--muted)}.arch-visual{position:absolute;left:50%;bottom:-160px;width:420px;height:420px;border:1px solid rgba(0,240,255,.22);transform:translateX(-50%) rotate(45deg);box-shadow:0 0 0 40px rgba(138,92,255,.04),0 0 0 80px rgba(0,240,255,.025)}.arch-stack{display:grid;grid-template-columns:1fr 1fr;gap:18px}.arch-stack>div{padding:26px;min-height:226px}.arch-stack strong{display:block;color:var(--cyan);font:11px Consolas;letter-spacing:.13em;margin-bottom:30px}.arch-stack h4{font-size:1.3rem;margin-bottom:9px}
+    .timeline{position:relative;margin-top:60px}.timeline:before{content:"";position:absolute;left:17px;top:0;bottom:0;width:1px;background:linear-gradient(var(--cyan),var(--violet),var(--pink))}.phase{display:grid;grid-template-columns:55px 170px 1fr;gap:20px;padding:0 0 44px;position:relative}.phase-dot{width:35px;height:35px;border:1px solid var(--cyan);border-radius:50%;background:var(--bg);display:grid;place-items:center;font:10px Consolas;box-shadow:0 0 20px rgba(0,240,255,.15)}.phase small{color:var(--cyan);font:10px Consolas;letter-spacing:.13em;text-transform:uppercase;padding-top:9px}.phase h3{font-size:1.45rem}.phase p{color:var(--muted);margin-top:6px}.phase.now .phase-dot{background:var(--cyan);color:#001114;box-shadow:0 0 28px rgba(0,240,255,.5)}
+    .truth{border-block:1px solid var(--line);background:linear-gradient(110deg,rgba(255,43,214,.05),rgba(0,240,255,.04));text-align:center}.truth h2{font-size:clamp(3rem,8vw,7.8rem);line-height:.86;letter-spacing:-.075em}.truth p{max-width:760px;margin:34px auto;color:var(--muted);font-size:1.08rem}.truth .status{display:inline-flex;gap:10px;border:1px solid rgba(185,255,52,.3);padding:9px 13px;color:var(--lime);font-size:.63rem}.blink{width:7px;height:7px;background:var(--lime);border-radius:50%;animation:blink 1.3s infinite}
+    footer{padding:70px 0 36px}.footer-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding-bottom:55px;border-bottom:1px solid var(--line)}.footer-top h2{font-size:clamp(3rem,7vw,7rem);line-height:.8;letter-spacing:-.07em}.footer-top h2 span{color:var(--cyan)}.footer-bottom{display:flex;justify-content:space-between;gap:30px;padding-top:26px;color:var(--muted);font-size:.75rem}.footer-links{display:flex;gap:25px}.footer-links a:hover{color:var(--cyan)}
+    .reveal{opacity:0;transform:translateY(28px);transition:.8s ease}.reveal.visible{opacity:1;transform:none}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.06);filter:hue-rotate(18deg)}}@keyframes marquee{to{transform:translateX(-50%)}}@keyframes blink{50%{opacity:.2}}@keyframes glitch{0%,88%,100%{clip-path:inset(0)}90%{clip-path:inset(15% 0 50%);transform:translate(4px)}94%{clip-path:inset(60% 0 5%);transform:translate(-4px)}}
+    .hero h1{animation:glitch 7s infinite}
+    @media(max-width:900px){.nav-links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;padding:25px;background:#090a11;border:1px solid var(--line)}.nav-links.open{display:flex}.nav-cta{display:none}.menu{display:block}.hero-grid,.section-head,.lab,.architecture{grid-template-columns:1fr}.hero{text-align:center}.hero-copy{margin:auto}.actions{justify-content:center}.hero-orbit{height:390px;margin-top:35px}.ring.r3{width:380px}.proof-grid{grid-template-columns:1fr 1fr}.product:nth-child(n){grid-column:span 12}.lab-panel{border-left:0;border-top:1px solid var(--line)}.arch-stack{grid-template-columns:1fr 1fr}.footer-top{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){.wrap{width:min(100% - 26px,1180px)}nav{top:10px}.hero{padding-top:120px}.hero h1{font-size:26vw}.hero h1 span{letter-spacing:.27em}.hero-orbit{height:310px}.core{width:125px;height:125px}.core:before{font-size:3.3rem}.ring.r1{width:190px;height:190px}.ring.r2{width:270px;height:270px}.ring.r3{width:300px;height:145px}.orbit-note{display:none}section{padding:90px 0}.proof-grid{grid-template-columns:1fr}.proof-step{min-height:220px}.arch-stack{grid-template-columns:1fr}.lab-copy{padding:32px 24px}.lab-panel{padding:20px}.phase{grid-template-columns:50px 1fr}.phase small{display:none}.footer-bottom{flex-direction:column}.footer-links{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <canvas id="space" aria-hidden="true"></canvas><div class="noise" aria-hidden="true"></div><div class="progress" aria-hidden="true"></div>
+  <nav aria-label="Main navigation">
+    <a class="brand" href="#home" aria-label="Vortex, home"><span class="brand-mark" aria-hidden="true"></span>VORTEX</a>
+    <div class="nav-links" id="navLinks"><a href="#protocol">Protocol</a><a href="#products">Products</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a></div>
+    <a class="nav-cta" href="https://github.com/aionvortex27-stack/Vortex" target="_blank" rel="noreferrer">Explore the code ↗</a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  </nav>
+
+  <main>
+    <header class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">// RAM-FIRST · PROOF-OF-WORK · RUST</p>
+          <h1>VORTEX<span>PROOF NETWORK</span></h1>
+          <p class="hero-copy"><strong>Verifying should be cheaper than trusting.</strong> An experimental network for independent, verifiable, durable digital proofs — without putting your data on the blockchain.</p>
+          <div class="actions"><a class="btn btn-primary" href="#protocol">Enter the Vortex ↓</a><a class="btn btn-ghost" href="https://github.com/aionvortex27-stack/Vortex" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        </div>
+        <div class="hero-orbit reveal" aria-label="Visual representation of the Vortex core">
+          <div class="ring r3"><i class="sat"></i></div><div class="ring r2"><i class="sat"></i></div><div class="ring r1"><i class="sat"></i></div><div class="core"></div>
+          <div class="orbit-note on1">NOISE XX / AUTH CHANNEL</div><div class="orbit-note on2">DETERMINISTIC STATE ROOT</div><div class="orbit-note on3">PORTABLE PROOF RECEIPT</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="status-rail" aria-label="Project status"><div class="rail-track"><span><b>● PHASE 6 OPEN</b></span><span>EXPERIMENTAL NETWORK</span><span><i>NO TOKEN · NO MAINNET</i></span><span>PROOF-OF-WORK</span><span>PRIVATE BY COMMITMENT</span><span>RUST CORE</span><span><b>● PHASE 6 OPEN</b></span><span>EXPERIMENTAL NETWORK</span><span><i>NO TOKEN · NO MAINNET</i></span><span>PROOF-OF-WORK</span><span>PRIVATE BY COMMITMENT</span><span>RUST CORE</span></div></div>
+
+    <section id="protocol">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">01 / THE PROTOCOL</p><h2>From information to <span class="outline">evidence.</span></h2></div><p>Vortex does not store files, models, or documents. It records minimal cryptographic fingerprints so anyone can verify integrity, authorship, and history.</p></div>
+        <div class="proof-grid reveal">
+          <article class="proof-step" data-n="01"><div class="proof-icon"><span>#</span></div><h3>LOCAL HASH</h3><p>The file stays with you. Only its mathematical fingerprint is prepared for registration.</p></article>
+          <article class="proof-step" data-n="02"><div class="proof-icon"><span>◇</span></div><h3>COMMITMENT</h3><p>Millions of records can be condensed into a single 32-byte Merkle root.</p></article>
+          <article class="proof-step" data-n="03"><div class="proof-icon"><span>V</span></div><h3>PoW INCLUSION</h3><p>The commitment enters a Vortex block with an inclusion proof and accumulated work.</p></article>
+          <article class="proof-step" data-n="04"><div class="proof-icon"><span>✓</span></div><h3>PORTABLE RECEIPT</h3><p>Offline verification with no account, company, server, or mandatory node. Evidence that outlives its issuer.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">02 / ECOSYSTEM</p><h2>One primitive.<br><span class="outline">Six products.</span></h2></div><p>A modular architecture that turns verifiable commitments into tools for development, AI, forensics, enterprise, and critical infrastructure.</p></div>
+        <div class="products">
+          <article class="product reveal"><span class="tag">ENTRY PRODUCT / 001</span><h3>Vortex Proof</h3><p>Registration and verification of files, contracts, logs, and datasets with portable receipts.</p><span class="arrow">↗</span></article>
+          <article class="product reveal"><span class="tag">SOFTWARE + AI / 002</span><h3>Provenance</h3><p>Lineage for commits, releases, binaries, models, datasets, training runs, and approvals.</p><span class="arrow">↗</span></article>
+          <article class="product reveal"><span class="tag">FORENSICS / 003</span><h3>Evidence</h3><p>Chain of custody, evidence integrity, and attributable version history.</p><span class="arrow">↗</span></article>
+          <article class="product reveal"><span class="tag">DUAL ROOT / 004</span><h3>Anchor+</h3><p>Periodic Bitcoin checkpoints as a second evidence layer — never as a consensus rule.</p><span class="arrow">↗</span></article>
+          <article class="product reveal"><span class="tag">INFRASTRUCTURE / 005</span><h3>Managed Node</h3><p>API, monitoring, and operations for teams that want the network without maintaining their own infrastructure.</p><span class="arrow">↗</span></article>
+          <article class="product reveal"><span class="tag">LONG MEMORY / 006</span><h3>Archive</h3><p>Verifiable retention, replication, and recovery of historical records for organizations.</p><span class="arrow">↗</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap lab reveal">
+        <div class="lab-copy"><p class="kicker">PROOF LAB / LOCAL ONLY</p><h2>Create a fingerprint. Now.</h2><p>Enter any text to generate a SHA-256 hash directly in your browser. Nothing is sent or registered: this is a local demonstration of the first step in a Vortex proof.</p></div>
+        <div class="lab-panel"><div class="window-bar"><span>VORTEX_PROOF_LAB.EXE</span><span class="dots">● ● ●</span></div><label for="proofInput">Input data</label><textarea id="proofInput">Vortex — verifying should be cheaper than trusting.</textarea><button class="btn btn-primary generate" id="generate">Generate SHA-256 fingerprint</button><div class="receipt" id="receipt"><b>STATUS:</b> WAITING FOR INPUT<br><b>PROCESSING:</b> LOCAL / WEB CRYPTO<br><b>DATA SENT:</b> NO<br><span class="hash">HASH: —</span></div></div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">03 / ARCHITECTURE</p><h2>Built to <span class="outline">fail clearly.</span></h2></div><p>Determinism, explicit bounds, and auditable recovery form the core. Post-quantum and AI research remain separate from consensus until accepted security models exist.</p></div>
+        <div class="architecture reveal">
+          <article class="arch-main"><p class="kicker">CORE / RAM-FIRST</p><h3>FAST STATE.<br>DURABLE MEMORY.</h3><p>Deterministic kernel, UTXO model, state roots, write-ahead log, authenticated snapshots, and crash recovery.</p><div class="arch-visual" aria-hidden="true"></div></article>
+          <div class="arch-stack">
+            <div><strong>NETWORK // 01</strong><h4>Authenticated transport</h4><p>Noise XX over TCP, identities bound to the handshake, and peer synchronization.</p></div>
+            <div><strong>CONSENSUS // 02</strong><h4>Proof-of-Work</h4><p>Block admission, accumulated-work fork choice, and auditable reorganization.</p></div>
+            <div><strong>DEFENCE // 03</strong><h4>Explicit bounds</h4><p>Mempool, relay, connections, and adversarial behavior tested under defined budgets.</p></div>
+            <div><strong>AGILITY // 04</strong><h4>Post-quantum future</h4><p>Cryptographic agility and hybrid migration are research goals — not current claims.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">04 / EXECUTION VECTOR</p><h2>The future, in <span class="outline">order.</span></h2></div><p>Each layer advances only after the previous one produces real evidence. No selling imaginary speed, future decentralization, or post-quantum security before its time.</p></div>
+        <div class="timeline reveal">
+          <article class="phase now"><div class="phase-dot">01</div><small>Now</small><div><h3>Vortex Proof Protocol</h3><p>Commitments, portable receipts, and independent verification.</p></div></article>
+          <article class="phase"><div class="phase-dot">02</div><small>Next</small><div><h3>Software & AI Provenance</h3><p>GitHub integrations and verifiable lineage for software and AI artifacts.</p></div></article>
+          <article class="phase"><div class="phase-dot">03</div><small>Scale</small><div><h3>Gateway Market</h3><p>Paid nodes and APIs providing convenience without becoming trusted authorities.</p></div></article>
+          <article class="phase"><div class="phase-dot">04</div><small>Memory</small><div><h3>Archive + Anchor+</h3><p>Verifiable retention, recovery, and periodic Bitcoin checkpoints.</p></div></article>
+          <article class="phase"><div class="phase-dot">05</div><small>Operations</small><div><h3>Vortex Enterprise</h3><p>Dashboard, SLA, reports, and integrations for organizational environments.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="truth">
+      <div class="wrap reveal"><div class="status"><i class="blink"></i>STATE TRANSPARENCY</div><h2>NOT YET<br><span class="outline">A PROMISE.</span></h2><p>Vortex is experimental research. Today there is no public testnet, mainnet, token, wallet, public mining network, or production software. What exists is a tested core and a documented direction for building utility before speculation.</p><a class="btn btn-primary" href="https://github.com/aionvortex27-stack/Vortex" target="_blank" rel="noreferrer">Audit the progress ↗</a></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><div class="footer-top"><div><p class="kicker">OPEN RESEARCH NETWORK</p><h2>DON'T TRUST.<br><span>VERIFY.</span></h2></div><a class="btn btn-ghost" href="#home">Return to the core ↑</a></div><div class="footer-bottom"><p>© 2026 Vortex. Experimental project — not an investment or financial product.</p><div class="footer-links"><a href="https://github.com/aionvortex27-stack/Vortex" target="_blank" rel="noreferrer">GitHub</a><a href="#protocol">Protocol</a><a href="#products">Products</a><a href="#roadmap">Roadmap</a></div></div></div></footer>
+
+  <script>
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvas=document.getElementById('space'),ctx=canvas.getContext('2d');let stars=[];
+    function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(150,innerWidth/7)},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.2,v:Math.random()*.18+.03,a:Math.random()*.7+.15}))}
+    function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);for(const s of stars){s.y-=s.v;if(s.y<0)s.y=innerHeight;ctx.beginPath();ctx.fillStyle=`rgba(180,220,255,${s.a})`;ctx.arc(s.x,s.y,s.r,0,7);ctx.fill()}if(!reduced)requestAnimationFrame(draw)}resize();draw();addEventListener('resize',resize);
+    addEventListener('pointermove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px')});
+    addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(scrollY/h*100)+'%'});
+    const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    const menu=document.getElementById('menu'),links=document.getElementById('navLinks');menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',open)});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+    document.querySelectorAll('.product').forEach(card=>{card.addEventListener('pointermove',e=>{if(reduced)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(700px) rotateX(${-y*4}deg) rotateY(${x*4}deg)`});card.addEventListener('pointerleave',()=>card.style.transform='')});
+    const input=document.getElementById('proofInput'),receipt=document.getElementById('receipt');document.getElementById('generate').addEventListener('click',async()=>{const data=new TextEncoder().encode(input.value),digest=await crypto.subtle.digest('SHA-256',data),hash=[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('');receipt.innerHTML=`<b>STATUS:</b> FINGERPRINT GENERATED<br><b>ALGORITHM:</b> SHA-256<br><b>BYTES PROCESSED:</b> ${data.length}<br><b>PROCESSING:</b> LOCAL / WEB CRYPTO<br><b>DATA SENT:</b> NO<br><span class="hash">HASH: ${hash}</span>`});
+  </script>
+</body>
+</html>
