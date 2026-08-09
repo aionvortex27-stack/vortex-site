@@ -34,15 +34,27 @@
     @media(max-width:900px){.nav-links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;padding:25px;background:#090a11;border:1px solid var(--line)}.nav-links.open{display:flex}.nav-cta{display:none}.menu{display:block}.hero-grid,.section-head,.lab,.architecture{grid-template-columns:1fr}.hero{text-align:center}.hero-copy{margin:auto}.actions{justify-content:center}.hero-orbit{height:390px;margin-top:35px}.ring.r3{width:380px}.proof-grid{grid-template-columns:1fr 1fr}.product:nth-child(n){grid-column:span 12}.lab-panel{border-left:0;border-top:1px solid var(--line)}.arch-stack{grid-template-columns:1fr 1fr}.footer-top{align-items:flex-start;flex-direction:column}}
     @media(max-width:560px){.wrap{width:min(100% - 26px,1180px)}nav{top:10px}.hero{padding-top:120px}.hero h1{font-size:26vw}.hero h1 span{letter-spacing:.27em}.hero-orbit{height:310px}.core{width:125px;height:125px}.core:before{font-size:3.3rem}.ring.r1{width:190px;height:190px}.ring.r2{width:270px;height:270px}.ring.r3{width:300px;height:145px}.orbit-note{display:none}section{padding:90px 0}.proof-grid{grid-template-columns:1fr}.proof-step{min-height:220px}.arch-stack{grid-template-columns:1fr}.lab-copy{padding:32px 24px}.lab-panel{padding:20px}.phase{grid-template-columns:50px 1fr}.phase small{display:none}.footer-bottom{flex-direction:column}.footer-links{flex-wrap:wrap}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  
+    .signal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.signal-card,.node-card,.join-card,.doc-card,.partner-card{border:1px solid var(--line);background:rgba(11,12,20,.78);padding:26px;position:relative;overflow:hidden}.signal-card:before,.node-card:before,.join-card:before,.doc-card:before,.partner-card:before{content:"";position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(var(--cyan),var(--violet));opacity:.75}.signal-card small,.node-card small,.join-card small,.doc-card small,.partner-card small{display:block;color:var(--cyan);font:10px Consolas;letter-spacing:.13em;text-transform:uppercase;margin-bottom:24px}.signal-card strong{display:block;font-size:1.2rem;margin-bottom:9px}.signal-card p,.node-card p,.join-card p,.doc-card p,.partner-card p{color:var(--muted);font-size:.9rem}.state-line{display:flex;align-items:center;gap:9px;margin-top:18px;font:10px Consolas;letter-spacing:.1em;text-transform:uppercase;color:var(--lime)}.state-line i{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}.state-line.pending{color:var(--pink)}
+    .node-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.node-primary{border:1px solid var(--line);padding:38px;background:linear-gradient(135deg,rgba(0,240,255,.07),rgba(11,12,20,.82) 45%);min-height:390px}.node-primary h3{font-size:clamp(2rem,4vw,3.6rem);line-height:.95;letter-spacing:-.045em;margin:22px 0}.node-primary>p{color:var(--muted);max-width:620px}.test-list{display:grid;gap:10px;margin-top:32px}.test-list li{list-style:none;border-top:1px solid var(--line);padding:13px 0;color:#d8dbe6;font-size:.9rem}.test-list b{color:var(--cyan);font:10px Consolas;letter-spacing:.1em;margin-right:12px}.node-stack{display:grid;gap:14px}.node-card h3,.join-card h3,.doc-card h3,.partner-card h3{font-size:1.35rem;margin-bottom:10px}
+    .join-grid,.docs-grid,.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.join-card,.doc-card,.partner-card{min-height:280px}.join-card .mini-link,.doc-card .mini-link,.partner-card .mini-link,.node-card .mini-link{display:inline-block;margin-top:24px;color:var(--cyan);font:10px Consolas;letter-spacing:.12em;text-transform:uppercase}.join-card .mini-link:hover,.doc-card .mini-link:hover,.partner-card .mini-link:hover,.node-card .mini-link:hover{color:var(--white)}
+    .support-shell{border:1px solid var(--line);display:grid;grid-template-columns:1.15fr .85fr;background:linear-gradient(120deg,rgba(138,92,255,.08),rgba(0,240,255,.045))}.support-main{padding:48px}.support-main h3{font-size:clamp(2.2rem,5vw,4.5rem);line-height:.92;letter-spacing:-.055em;margin:20px 0}.support-main>p{color:var(--muted);max-width:650px}.support-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.support-uses{border-left:1px solid var(--line);padding:32px;display:grid;gap:1px;background:var(--line)}.support-uses div{background:#090a11;padding:20px}.support-uses strong{display:block;color:var(--cyan);font:10px Consolas;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}.support-uses span{color:#c5c9d5;font-size:.9rem}.support-note{margin-top:24px;border-left:2px solid var(--pink);padding:13px 16px;color:#c4c8d4;font-size:.82rem;background:rgba(255,43,214,.045)}
+    .update-log{border:1px solid var(--line);background:rgba(11,12,20,.72)}.update-row{display:grid;grid-template-columns:150px 210px 1fr;gap:28px;padding:25px;border-bottom:1px solid var(--line);align-items:start}.update-row:last-child{border-bottom:0}.update-row time,.update-row small{font:10px Consolas;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}.update-row small{color:var(--pink)}.update-row h3{font-size:1.2rem;margin-bottom:7px}.update-row p{color:var(--muted);font-size:.9rem}
+    .doc-card{min-height:250px}.doc-state{display:inline-block;margin-top:22px;border:1px solid var(--line);padding:7px 9px;color:var(--muted);font:9px Consolas;letter-spacing:.1em;text-transform:uppercase}.doc-state.available{border-color:rgba(185,255,52,.3);color:var(--lime)}
+    .faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line);background:rgba(11,12,20,.55)}.faq-list summary{cursor:pointer;list-style:none;padding:24px 58px 24px 22px;font-weight:800;position:relative}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";position:absolute;right:22px;top:18px;color:var(--cyan);font:26px Consolas}.faq-list details[open] summary:after{content:"−"}.faq-list details p{padding:0 22px 24px;color:var(--muted);max-width:900px}
+    .partner-card{min-height:250px}.contact-strip{margin-top:14px;border:1px solid var(--line);padding:28px;display:flex;justify-content:space-between;align-items:center;gap:25px;background:rgba(0,240,255,.035)}.contact-strip p{color:var(--muted);margin-top:6px}.contact-strip .support-actions{margin-top:0;flex-shrink:0}
+    @media(max-width:900px){nav.menu-open{clip-path:none}.signal-grid{grid-template-columns:1fr 1fr}.node-grid,.support-shell{grid-template-columns:1fr}.join-grid,.docs-grid,.partner-grid{grid-template-columns:1fr}.support-uses{border-left:0;border-top:1px solid var(--line)}.update-row{grid-template-columns:110px 1fr}.update-row>div{grid-column:2}.contact-strip{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){.signal-grid{grid-template-columns:1fr}.node-primary,.support-main{padding:30px 22px}.update-row{grid-template-columns:1fr;gap:9px}.update-row>div{grid-column:1}.contact-strip{padding:22px}.join-card,.doc-card,.partner-card{min-height:0}}
+
   </style>
 </head>
 <body>
   <canvas id="space" aria-hidden="true"></canvas><div class="noise" aria-hidden="true"></div><div class="progress" aria-hidden="true"></div>
   <nav aria-label="Main navigation">
     <a class="brand" href="#home" aria-label="Vortex, home"><span class="brand-mark" aria-hidden="true"></span>VORTEX</a>
-    <div class="nav-links" id="navLinks"><a href="#protocol">Protocol</a><a href="#products">Products</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a></div>
+    <div class="nav-links" id="navLinks"><a href="#protocol">Protocol</a><a href="#status">Status</a><a href="#nodes">Node Testing</a><a href="#involved">Get Involved</a><a href="#support">Support</a></div>
     <a class="nav-cta" href="https://github.com/aionvortex27-stack">Open GitHub profile ↗</a>
-    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button class="menu" id="menu" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">☰</button>
   </nav>
 
   <main>
@@ -124,12 +136,108 @@
       </div>
     </section>
 
+
+    <section id="status">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">05 / DEVELOPMENT STATUS</p><h2>Evidence before <span class="outline">announcements.</span></h2></div><p>Vortex is in active development. The core has advanced into controlled node testing, while public participation remains closed until operation can be documented and reproduced safely.</p></div>
+        <div class="signal-grid reveal">
+          <article class="signal-card"><small>Current phase</small><strong>Phase 6 — Open</strong><p>Portable proofs, software and AI provenance, and network validation are the active development focus.</p><div class="state-line"><i></i>Active development</div></article>
+          <article class="signal-card"><small>Network</small><strong>Controlled node tests</strong><p>Node behavior is being exercised in private environments before any public testnet announcement.</p><div class="state-line"><i></i>Testing in progress</div></article>
+          <article class="signal-card"><small>Public access</small><strong>Not open yet</strong><p>There is no public testnet, public mining network, production wallet, or production service.</p><div class="state-line pending"><i></i>Pending readiness gates</div></article>
+          <article class="signal-card"><small>Economic layer</small><strong>No token or mainnet</strong><p>Vortex is building technical utility first. Nothing on this site is a token sale or investment offer.</p><div class="state-line pending"><i></i>No financial offering</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nodes">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">06 / NODE TESTING</p><h2>Prove the network <span class="outline">under pressure.</span></h2></div><p>The current campaign is about behavior, recovery, and reproducibility — not publishing impressive but unverifiable counters.</p></div>
+        <div class="node-grid reveal">
+          <article class="node-primary"><p class="kicker">CONTROLLED TEST CAMPAIGN</p><h3>NODES BEFORE NETWORK EFFECTS.</h3><p>Testing focuses on whether independent processes can authenticate, synchronize, recover, and remain within explicit resource limits. Public metrics will appear only when public nodes can verify them.</p><ul class="test-list"><li><b>01</b>Authenticated peer sessions and identity binding</li><li><b>02</b>Synchronization, restart, snapshot, and recovery behavior</li><li><b>03</b>Proof-of-Work admission, fork choice, and reorganization handling</li><li><b>04</b>Bounded connections, relay, mempool, and adversarial inputs</li></ul></article>
+          <div class="node-stack">
+            <article class="node-card"><small>Current mode</small><h3>Private, controlled environments</h3><p>Operator access is not public while procedures and failure behavior are still being hardened.</p></article>
+            <article class="node-card"><small>Next readiness gate</small><h3>Reproducible operation</h3><p>A public testnet requires an operator guide, repeatable startup and recovery, observable failures, and independently operated nodes.</p></article>
+            <article class="node-card"><small>Interested operators</small><h3>Join the early list</h3><p>Experienced infrastructure operators can introduce themselves before applications open.</p><a class="mini-link" href="mailto:aionvortex27@gmail.com?subject=Vortex%20Early%20Node%20Operator">Contact the project ↗</a></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="involved">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">07 / GET INVOLVED</p><h2>Help build what can be <span class="outline">verified.</span></h2></div><p>Vortex is looking for rigorous contributors who care about reproducibility, failure analysis, cryptography, distributed systems, and useful proof infrastructure.</p></div>
+        <div class="join-grid reveal">
+          <article class="join-card"><small>Node operators</small><h3>Test infrastructure</h3><p>Help validate deployment, connectivity, synchronization, restart, recovery, monitoring, and resource bounds when the operator program opens.</p><a class="mini-link" href="mailto:aionvortex27@gmail.com?subject=Vortex%20Node%20Operator">Introduce yourself ↗</a></article>
+          <article class="join-card"><small>Developers + researchers</small><h3>Build and challenge</h3><p>Contribute expertise in Rust, networking, consensus, storage, cryptography, developer tooling, AI provenance, or verification workflows.</p><a class="mini-link" href="https://github.com/aionvortex27-stack">Explore the GitHub profile ↗</a></article>
+          <article class="join-card"><small>Security</small><h3>Report responsibly</h3><p>If you identify a potential security issue, send a concise private report with impact, reproduction details, and a safe contact method.</p><a class="mini-link" href="mailto:aionvortex27@gmail.com?subject=Private%20Vortex%20Security%20Report">Send a private report ↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">08 / SUPPORT VORTEX</p><h2>Fund the work, <span class="outline">not speculation.</span></h2></div><p>Support can help expand engineering capacity, node infrastructure, security testing, documentation, and public research outputs.</p></div>
+        <div class="support-shell reveal">
+          <div class="support-main"><p class="kicker">SUPPORT VORTEX DEVELOPMENT</p><h3>BUILD THE PROOF LAYER.</h3><p>Vortex is preparing a transparent support channel. Until it is formally available, developers, infrastructure sponsors, grant programs, and strategic partners can contact the project directly.</p><div class="support-actions"><a class="btn btn-primary" href="mailto:aionvortex27@gmail.com?subject=Support%20Vortex%20Development">Discuss support ↗</a><a class="btn btn-ghost" href="https://github.com/aionvortex27-stack">Follow on GitHub ↗</a></div><div class="support-note"><strong>No promise of financial return.</strong> Support does not provide tokens, equity, ownership, governance rights, or any expectation of profit. Vortex remains experimental and is not production-ready.</div></div>
+          <div class="support-uses"><div><strong>Engineering</strong><span>Core development, tooling, integrations, and focused contributor work.</span></div><div><strong>Infrastructure</strong><span>Node environments, observability, test capacity, and resilient public services.</span></div><div><strong>Security</strong><span>Adversarial testing, review, audits, and responsible disclosure processes.</span></div><div><strong>Documentation</strong><span>Protocol material, operator guides, reproducible demos, and research publication.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="updates">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">09 / DEVELOPMENT UPDATES</p><h2>A public record of <span class="outline">movement.</span></h2></div><p>Updates distinguish completed foundations, current work, and future gates. Dates describe project communication — never network availability.</p></div>
+        <div class="update-log reveal">
+          <article class="update-row"><time datetime="2026-08">August 2026</time><small>Current</small><div><h3>Controlled node testing underway</h3><p>Development has advanced into testing node interaction, synchronization, restart, recovery, consensus behavior, and explicit resource limits.</p></div></article>
+          <article class="update-row"><time datetime="2026">Foundation</time><small>Completed stage</small><div><h3>Tested core and architectural direction</h3><p>The project established its RAM-first core, authenticated transport direction, deterministic state, Proof-of-Work rules, and recovery model.</p></div></article>
+          <article class="update-row"><time>Next gate</time><small>Planned</small><div><h3>Public testnet readiness</h3><p>The next public milestone requires reproducible node operation, independent operators, documentation, observability, and clear participation boundaries.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">10 / TECHNICAL DOCUMENTATION</p><h2>Claims need <span class="outline">instructions.</span></h2></div><p>Documentation will be published as each surface becomes stable enough to reproduce. Unfinished material is labeled instead of presented as complete.</p></div>
+        <div class="docs-grid reveal">
+          <article class="doc-card"><small>Protocol overview</small><h3>Proof flow and architecture</h3><p>The current site documents local hashing, commitments, PoW inclusion, portable receipts, and the architectural direction.</p><a class="mini-link" href="#protocol">Read the overview ↓</a><span class="doc-state available">Available now</span></article>
+          <article class="doc-card"><small>Operator material</small><h3>Node deployment guide</h3><p>Installation, configuration, connectivity, monitoring, restart, snapshot, recovery, and troubleshooting procedures.</p><span class="doc-state">In preparation</span></article>
+          <article class="doc-card"><small>Security material</small><h3>Threat and failure model</h3><p>Trust boundaries, attack surfaces, resource budgets, disclosure process, and conditions that must fail explicitly.</p><span class="doc-state">In preparation</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">11 / FAQ</p><h2>Direct answers. <span class="outline">No fog.</span></h2></div><p>The fastest way to understand Vortex today is to separate what exists from what is still being built.</p></div>
+        <div class="faq-list reveal">
+          <details><summary>Does Vortex have a token?</summary><p>No. There is currently no Vortex token sale, public token, wallet, mainnet, or financial product.</p></details>
+          <details><summary>Is the Vortex testnet public?</summary><p>No. Node testing is currently controlled and private. A public testnet will be announced only after operator procedures and readiness gates are met.</p></details>
+          <details><summary>Does Vortex store my files or data?</summary><p>The intended proof flow keeps files, models, and documents with their owner. Minimal cryptographic commitments are used to verify integrity and history.</p></details>
+          <details><summary>What works today?</summary><p>Vortex has a tested research core, an implemented architectural direction, a browser-based local hash demonstration, and active controlled node testing. It is not production software.</p></details>
+          <details><summary>How can developers participate?</summary><p>Developers and researchers can introduce themselves by email and follow the public GitHub profile. Broader contribution paths will open with stable documentation and public repositories.</p></details>
+          <details><summary>Is supporting Vortex an investment?</summary><p>No. Support does not provide tokens, equity, ownership, governance rights, or an expectation of financial return.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="kicker">12 / PARTNERSHIPS + CONTACT</p><h2>Bring useful <span class="outline">pressure.</span></h2></div><p>Vortex welcomes technically aligned conversations with researchers, infrastructure providers, grant programs, security specialists, and long-horizon strategic partners.</p></div>
+        <div class="partner-grid reveal">
+          <article class="partner-card"><small>Research</small><h3>Protocols and provenance</h3><p>Collaborate on verification, distributed systems, cryptographic agility, software supply chains, and AI artifact provenance.</p></article>
+          <article class="partner-card"><small>Infrastructure</small><h3>Nodes and observability</h3><p>Help design independently operated environments, monitoring, deployment workflows, and resilient test infrastructure.</p></article>
+          <article class="partner-card"><small>Grants + strategic support</small><h3>Milestone-based funding</h3><p>Discuss scoped engineering, security, documentation, research, and public infrastructure milestones.</p></article>
+        </div>
+        <div class="contact-strip reveal"><div><p class="kicker">PRIMARY CONTACT</p><p>Use email for proposals and private technical conversations, or follow the public GitHub profile for project activity.</p></div><div class="support-actions"><a class="btn btn-primary" href="mailto:aionvortex27@gmail.com?subject=Vortex%20Partnership">aionvortex27@gmail.com ↗</a><a class="btn btn-ghost" href="https://github.com/aionvortex27-stack">GitHub ↗</a></div></div>
+      </div>
+    </section>
+
     <section class="truth">
       <div class="wrap reveal"><div class="status"><i class="blink"></i>STATE TRANSPARENCY</div><h2>NOT YET<br><span class="outline">A PROMISE.</span></h2><p>Vortex is experimental research. Today there is no public testnet, mainnet, token, wallet, public mining network, or production software. What exists is a tested core and a documented direction for building utility before speculation.</p><a class="btn btn-primary" href="https://github.com/aionvortex27-stack">Follow the progress ↗</a></div>
     </section>
   </main>
 
-  <footer><div class="wrap"><div class="footer-top"><div><p class="kicker">OPEN RESEARCH NETWORK</p><h2>DON'T TRUST.<br><span>VERIFY.</span></h2></div><a class="btn btn-ghost" href="#home">Return to the core ↑</a></div><div class="footer-bottom"><p>© 2026 Vortex. Experimental project — not an investment or financial product.</p><div class="footer-links"><a href="https://github.com/aionvortex27-stack">GitHub Profile</a><a href="#protocol">Protocol</a><a href="#products">Products</a><a href="#roadmap">Roadmap</a></div></div></div></footer>
+  <footer><div class="wrap"><div class="footer-top"><div><p class="kicker">OPEN RESEARCH NETWORK</p><h2>DON'T TRUST.<br><span>VERIFY.</span></h2></div><a class="btn btn-ghost" href="#home">Return to the core ↑</a></div><div class="footer-bottom"><p>© 2026 Vortex. Experimental project — not an investment or financial product.</p><div class="footer-links"><a href="https://github.com/aionvortex27-stack">GitHub</a><a href="mailto:aionvortex27@gmail.com">Email</a><a href="#status">Status</a><a href="#involved">Get Involved</a><a href="#support">Support</a><a href="#faq">FAQ</a></div></div></div></footer>
 
   <script>
     const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -139,7 +247,7 @@
     addEventListener('pointermove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px')});
     addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(scrollY/h*100)+'%'});
     const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    const menu=document.getElementById('menu'),links=document.getElementById('navLinks');menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',open)});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+    const menu=document.getElementById('menu'),links=document.getElementById('navLinks'),mainNav=menu.closest('nav');function setMenu(open){links.classList.toggle('open',open);mainNav.classList.toggle('menu-open',open);menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'×':'☰'}menu.addEventListener('click',()=>setMenu(!links.classList.contains('open')));links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));addEventListener('resize',()=>{if(innerWidth>900)setMenu(false)});
     document.querySelectorAll('.product').forEach(card=>{card.addEventListener('pointermove',e=>{if(reduced)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(700px) rotateX(${-y*4}deg) rotateY(${x*4}deg)`});card.addEventListener('pointerleave',()=>card.style.transform='')});
     const input=document.getElementById('proofInput'),receipt=document.getElementById('receipt');document.getElementById('generate').addEventListener('click',async()=>{const data=new TextEncoder().encode(input.value),digest=await crypto.subtle.digest('SHA-256',data),hash=[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('');receipt.innerHTML=`<b>STATUS:</b> FINGERPRINT GENERATED<br><b>ALGORITHM:</b> SHA-256<br><b>BYTES PROCESSED:</b> ${data.length}<br><b>PROCESSING:</b> LOCAL / WEB CRYPTO<br><b>DATA SENT:</b> NO<br><span class="hash">HASH: ${hash}</span>`});
   </script>
